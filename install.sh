@@ -190,9 +190,7 @@ app_install slack ''
 app_install appcleaner ''
 app_install kindle ''
 app_install eclipse-ide ''
-app_install google-japanese-ime ''
 app_install Caskroom/cask/vivaldi ''
-app_install Caskroom/cask/wireshark ''
 app_install filezilla ''
 
 atom_package_install() {
@@ -214,22 +212,22 @@ atom_package_install regex-railroad-diagram
 atom_package_install file-icons
 
 #vagrant設定(共有フォルダは~/Documents/Program)
-mkdir -p $HOME/Documents/Program
-vagrant box add CentOS7 https://github.com/holms/vagrant-centos7-box/releases/download/7.1.1503.001/CentOS-7.1.1503-x86_64-netboot.box
-
-create_vagrantfile() {
-	mkdir -p $1
-	cd $1
-	vagrant init $2
-	[ $? -ne 0 ] && echo ERROR vagrant $1 $2
-}
-
-create_vagrantfile $HOME/Vagrant/CentOS7/ CentOS7
-create_vagrantfile $HOME/Vagrant/Intern/CentOS7/ CentOS7
+# mkdir -p $HOME/Documents/Program
+# vagrant box add CentOS7 https://github.com/holms/vagrant-centos7-box/releases/download/7.1.1503.001/CentOS-7.1.1503-x86_64-netboot.box
+#
+# create_vagrantfile() {
+# 	mkdir -p $1
+# 	cd $1
+# 	vagrant init $2
+# 	[ $? -ne 0 ] && echo ERROR vagrant $1 $2
+# }
+#
+# create_vagrantfile $HOME/Vagrant/CentOS7/ CentOS7
+# create_vagrantfile $HOME/Vagrant/Intern/CentOS7/ CentOS7
 
 #vim設定
-mkdir -p $HOME/.vim/colors
-mkdir -p $HOME/.vim/autoload
+# mkdir -p $HOME/.vim/colors
+# mkdir -p $HOME/.vim/autoload
 #git clone https://github.com/Little-Tiny-S2-Hiroto/dotfiles.git  $HOME
 
 #ln -s $HOME/dotfiles/init.vim $HOME/.vimrc
