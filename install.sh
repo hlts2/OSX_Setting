@@ -135,6 +135,14 @@ killall Dock
 killall SystemUIServer
 killall Finder
 
+#デザイン設定
+sudo cp modIncosolata.ttf $HOME/Library/Fonts/
+set_font() {
+	osascript -e "tell application \"Terminal\" to set the font name of window 1 to \"$1\""
+    osascript -e "tell application \"Terminal\" to set font size of window 1 to $2"
+}
+
+set_font "modIncosolata" 14
 
 #APP,package設定
 echo "$1" | sudo -S xcodebuild -license
@@ -192,6 +200,8 @@ app_install kindle ''
 app_install eclipse-ide ''
 app_install Caskroom/cask/vivaldi ''
 app_install filezilla ''
+app_install java ''
+app_install android-studio ''
 
 atom_package_install() {
 	echo EXCUTING apm install $1
@@ -211,25 +221,6 @@ atom_package_install linter
 atom_package_install regex-railroad-diagram
 atom_package_install file-icons
 
-#vagrant設定(共有フォルダは~/Documents/Program)
-# mkdir -p $HOME/Documents/Program
-# vagrant box add CentOS7 https://github.com/holms/vagrant-centos7-box/releases/download/7.1.1503.001/CentOS-7.1.1503-x86_64-netboot.box
-#
-# create_vagrantfile() {
-# 	mkdir -p $1
-# 	cd $1
-# 	vagrant init $2
-# 	[ $? -ne 0 ] && echo ERROR vagrant $1 $2
-# }
-#
-# create_vagrantfile $HOME/Vagrant/CentOS7/ CentOS7
-# create_vagrantfile $HOME/Vagrant/Intern/CentOS7/ CentOS7
-
-#vim設定
-# mkdir -p $HOME/.vim/colors
-# mkdir -p $HOME/.vim/autoload
-#git clone https://github.com/Little-Tiny-S2-Hiroto/dotfiles.git  $HOME
-
-#ln -s $HOME/dotfiles/init.vim $HOME/.vimrc
-#ln -s $HOME/dotfiles/molokai.vim $HOME/.vim/colors/molokai.vim
-#ln -s $HOME/dotfiles/plug.vim $HOME/.vim/autoload/plug.vim
+echo "$1" | sudo -S open ./monokai.terminal
+echo "$1" | sudo -S chsh -s /usr/local/bin/zsh
+echo "$1" | sudo -S reboot
