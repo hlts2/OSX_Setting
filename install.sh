@@ -181,16 +181,12 @@ package_install wget ''
 package_install curl ''
 package_install zsh ''
 package_install tmux ''
-package_install openssl ''
-package_install packer ''
-package_install readline ''
-package_install ansible ''
-package_install gauche ''
-#package_install go ''
+package_install docker-machine ''
+package_install docker ''
+package_install java
 
 #アプリケーションインストール
 app_install virtualbox ''
-app_install vagrant ''
 app_install google-chrome ''
 app_install ccleaner ''
 app_install atom ''
@@ -200,8 +196,8 @@ app_install kindle ''
 app_install eclipse-ide ''
 app_install Caskroom/cask/vivaldi ''
 app_install filezilla ''
-app_install java ''
 app_install android-studio ''
+app_install gimp
 
 atom_package_install() {
 	echo EXCUTING apm install $1
