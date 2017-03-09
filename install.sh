@@ -183,7 +183,8 @@ package_install zsh ''
 package_install tmux ''
 package_install docker-machine ''
 package_install docker ''
-package_install java
+package_install java ''
+package_install carthage ''
 
 #アプリケーションインストール
 app_install virtualbox ''
@@ -197,7 +198,6 @@ app_install eclipse-ide ''
 app_install Caskroom/cask/vivaldi ''
 app_install filezilla ''
 app_install android-studio ''
-app_install gimp
 
 atom_package_install() {
 	echo EXCUTING apm install $1
