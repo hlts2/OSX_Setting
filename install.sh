@@ -149,9 +149,7 @@ echo "$1" | sudo -S xcodebuild -license
 
 xcode-select --install
 
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
-brew install brew-cask
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 brew_init() {
 	echo "Initializing brew"
@@ -161,12 +159,26 @@ brew_init() {
 	brew linkapps
 }
 
-brew_init
+gem_init() {
+	echo "Initializing gem"
+	gem update --system
+}
 
-package_install() {
+brew_init
+gem_init
+
+brew install brew-cask
+
+brew_package_install() {
 	echo EXCUTING brew install $1 $2
 	brew install $1 $2
 	[ $? -ne 0 ] && echo ERROR brew install $1 $2
+}
+
+gem_package_install() {
+	echo EXCUTING gem install $1 $2
+	gem install $1 $2
+	[ $? -ne 0 ] && echo ERROR gem install $1 $2
 }
 
 app_install() {
@@ -175,17 +187,19 @@ app_install() {
 	[ $? -ne 0 ] && echo ERROR brew cask install $1 $2
 }
 
-#パッケージインストール
-package_install git ''
-package_install wget ''
-package_install curl ''
-package_install zsh ''
-package_install tmux ''
-package_install docker-machine ''
-package_install docker ''
-package_install java ''
-package_install carthage ''
-package_install pod ''
+#brewパッケージインストール
+brew_package_install git ''
+brew_package_install wget ''
+brew_package_install curl ''
+brew_package_install zsh ''
+brew_package_install tmux ''
+brew_package_install docker-machine ''
+brew_package_install docker ''
+brew_package_install java ''
+brew_package_install carthage ''
+
+#gemパッケージインストール
+gem_package_install pod ''
 
 #アプリケーションインストール
 app_install virtualbox ''
