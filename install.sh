@@ -185,6 +185,7 @@ package_install docker-machine ''
 package_install docker ''
 package_install java ''
 package_install carthage ''
+package_install pod ''
 
 #アプリケーションインストール
 app_install virtualbox ''
