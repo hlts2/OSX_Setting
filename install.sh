@@ -202,7 +202,7 @@ app_install() {
 }
 
 #brewパッケージインストール
- brew_package_install openssl ''
+brew_package_install openssl ''
 brew_package_install git ''
 brew_package_install wget ''
 brew_package_install curl ''
@@ -279,8 +279,6 @@ vagrant_setup() {
 }
 
 vagrant_setup
-
-#Go設定
 
 
 echo "$1" | sudo -S chsh -s /usr/local/bin/zsh $USER
