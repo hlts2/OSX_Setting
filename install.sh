@@ -232,6 +232,7 @@ atom_package_install linter
 atom_package_install regex-railroad-diagram
 atom_package_install file-icons
 
+
 echo "$1" | sudo -S open ./monokai.terminal
 echo "$1" | sudo -S chsh -s /usr/local/bin/zsh
 echo "$1" | sudo -S reboot
