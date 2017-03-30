@@ -42,9 +42,6 @@ defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
 defaults write com.apple.Safari AutoFillPasswords -bool false
 defaults write com.apple.Safari WebKitInitialTimedLayoutDelay 0.0
 
-#terminal設定
-defaults write com.apple.helpviewer DevMode -bool true
-
 #Finder設定
 defaults write com.apple.frameworks.diskimages auto-open-ro-root -bool true
 defaults write com.apple.frameworks.diskimages auto-open-rw-root -bool true
@@ -131,25 +128,42 @@ defaults write com.apple.dashboard mcx-disabled -boolean true
 
 defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 
+#共有設定
+echo "$1" | sudo scutil --set ComputerName H_Funakoshi
+echo "$1" | sudo scutil --set LocalHostName HirotoFunakoshi
+
+#Terminal設定
+defaults write com.apple.helpviewer DevMode -bool true
+defaults write com.apple.terminal StringEncodings -array 4
+
+TERM_THEMA='monokai'
+echo "$1" | sudo -S open ./$TERM_THEMA.terminal
+sleep 2
+defaults write com.apple.Terminal "Startup Window Settings" -string "$TERM_THEMA"
+defaults write com.apple.Terminal "Default Window Settings" -string "$TERM_THEMA"
+
+TERM_FONT_NAME='modIncosolata.ttf'
+sudo cp $TERM_FONT_NAME $HOME/Library/Fonts
+set_font() {
+	osascript -e "tell application \"Terminal\" to set the font name of window 1 to \"$1\""
+	osascript -e "tell application \"Terminal\" to set font size of window 1 to $2"
+}
+set_font "$TERM_FONT_NAME" 14
+
+defaults import com.apple.Terminal "$HOME/Library/Preferences/com.apple.Terminal.plist"
+
 killall Dock
 killall SystemUIServer
 killall Finder
 
-#デザイン設定
-sudo cp modIncosolata.ttf $HOME/Library/Fonts/
-set_font() {
-	osascript -e "tell application \"Terminal\" to set the font name of window 1 to \"$1\""
-    osascript -e "tell application \"Terminal\" to set font size of window 1 to $2"
-}
 
-set_font "modIncosolata" 14
-
-#APP,package設定
-echo "$1" | sudo -S xcodebuild -license
-
+#echo "$1" | sudo -S xcodebuild -license
 xcode-select --install
 
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+#Homebrewインストール
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+brew tap homebrew/bundle
 
 brew_init() {
 	echo "Initializing brew"
@@ -167,7 +181,7 @@ gem_init() {
 brew_init
 gem_init
 
-brew install brew-cask
+brew install caskroom/cask/brew-cask
 
 brew_package_install() {
 	echo EXCUTING brew install $1 $2
@@ -188,6 +202,7 @@ app_install() {
 }
 
 #brewパッケージインストール
+ brew_package_install openssl ''
 brew_package_install git ''
 brew_package_install wget ''
 brew_package_install curl ''
@@ -195,24 +210,29 @@ brew_package_install zsh ''
 brew_package_install tmux ''
 brew_package_install docker-machine ''
 brew_package_install docker ''
-brew_package_install java ''
 brew_package_install carthage ''
+brew_package_install fontconfig ''
+brew_package_install cmake ''
+brew_package_install pkg-config ''
+brew_package_install libtool ''
+brew_package_install go ''
 
 #gemパッケージインストール
-gem_package_install pod ''
+#gem_package_install pod ''
 
 #アプリケーションインストール
 app_install virtualbox ''
+app_install vagrant ''
 app_install google-chrome ''
 app_install ccleaner ''
 app_install atom ''
 app_install slack ''
 app_install appcleaner ''
 app_install kindle ''
-app_install eclipse-ide ''
-app_install Caskroom/cask/vivaldi ''
-app_install filezilla ''
+app_install java ''
+app_install netbeans ''
 app_install android-studio ''
+app_install filezilla ''
 
 atom_package_install() {
 	echo EXCUTING apm install $1
@@ -233,6 +253,35 @@ atom_package_install regex-railroad-diagram
 atom_package_install file-icons
 
 
-echo "$1" | sudo -S open ./monokai.terminal
-echo "$1" | sudo -S chsh -s /usr/local/bin/zsh
+#nvimインストール
+nvim_install() {
+	echo "$1" | sudo -S rm -rf $HOME/neovim
+	echo "$1" | sudo -S rm -rf /usr/local/bin/nvim
+	echo "$1" | sudo rm -rf /usr/local/share/nvim
+	cd $HOME
+        git clone https://github.com/neovim/neovim
+        cd neovim
+        make clean
+        make CMAKE_BUILD_TYPE=RelWithDebInfo
+        sudo make install
+        cd ../
+        rm -rf neovim
+}
+
+nvim_install $1
+
+#vagrantの初期設定
+vagrant_setup() {
+	vagrant box add CentOS7 https://github.com/tommy-muehle/puppet-vagrant-boxes/releases/download/1.1.0/centos-7.0-x86_64.box
+	mkdir -p $HOME/vagrant/CentOS7
+	cd $HOME/vagrant/CentOS7
+	vagrant init CentOS7
+}
+
+vagrant_setup
+
+#Go設定
+
+
+echo "$1" | sudo -S chsh -s /usr/local/bin/zsh $USER
 echo "$1" | sudo -S reboot
