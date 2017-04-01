@@ -223,6 +223,7 @@ brew_package_install go ''
 
 #gemパッケージインストール
 #gem_package_install pod ''
+echo "$1" | sudo -S gem install -n /usr/local/bin cocoapods
 
 #アプリケーションインストール
 app_install virtualbox ''
