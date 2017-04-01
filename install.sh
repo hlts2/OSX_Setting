@@ -270,6 +270,25 @@ nvim_install() {
 
 nvim_install $1
 
+#anyenvインストール
+rm -r $HOME/.anyenv
+git clone https://github.com/riywo/anyenv $HOME/.anyenv
+rm -r $HOME/.anyenv/plugins
+mkdir $HOME/.anyenv/plugins
+git clone https://github.com/znz/anyenv-update.git $HOME/.anyenv/plugins/anyenv-update
+git clone git://github.com/aereal/anyenv-exec.git $HOME/.anyenv/plugins/anyenv-exe
+git clone https://github.com/znz/anyenv-git.git $HOME/.anyenv/plugins/anyenv-git
+
+#Go設定
+
+#Python設定
+
+#Swift設定
+
+#PHP設定
+
+#Java設定
+
 #vagrantの初期設定
 vagrant_setup() {
 	vagrant box add CentOS7 https://github.com/tommy-muehle/puppet-vagrant-boxes/releases/download/1.1.0/centos-7.0-x86_64.box
