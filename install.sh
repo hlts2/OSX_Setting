@@ -142,7 +142,6 @@ load_terminal_thema_setting() {
 	defaults write com.apple.Terminal "Startup Window Settings" -string "monokai"
 	defaults write com.apple.Terminal "Default Window Settings" -string "monokai"
 }
-load_terminal_thema_setting
 
 load_terminal_font_setting() {
     echo "$1" | sudo -S cp ./modIncosolata.ttf $HOME/Library/Fonts
@@ -152,6 +151,8 @@ load_terminal_font_setting() {
 	}
 	set_font "modIncosolata.ttf" 14
 }
+
+load_terminal_thema_setting
 load_terminal_font_setting
 
 defaults import com.apple.Terminal "$HOME/Library/Preferences/com.apple.Terminal.plist"
@@ -298,10 +299,19 @@ git clone git://github.com/aereal/anyenv-exec.git $HOME/.anyenv/plugins/anyenv-e
 git clone https://github.com/znz/anyenv-git.git $HOME/.anyenv/plugins/anyenv-git
 
 load_anyenv_settings
-
-#Go設定
+anyenv install -l
 
 #Python設定
+anyenv install pyenv
+mkdir -p $HOME/.anyenv/envs/pyenv/plugins
+
+load_anyenv_settings
+
+pyenv install 2.7.13
+pyenv install 3.6.0
+pyenv global 2.7.13 3.6.0
+
+load_anyenv_settings
 
 #Swift設定
 
