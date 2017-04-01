@@ -314,6 +314,13 @@ pyenv global 2.7.13 3.6.0
 
 load_anyenv_settings
 
+pip install --upgrade pip
+pip2 install --upgrade pip2
+pip3 install --upgrade pip3
+
+pip install --upgrade neovim
+pip2 install --upgrade neovim
+pip3 install --upgrade neovim
 
 #Swift設定
 
