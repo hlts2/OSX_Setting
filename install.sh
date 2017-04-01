@@ -136,19 +136,23 @@ echo "$1" | sudo scutil --set LocalHostName HirotoFunakoshi
 defaults write com.apple.helpviewer DevMode -bool true
 defaults write com.apple.terminal StringEncodings -array 4
 
-TERM_THEMA='monokai'
-echo "$1" | sudo -S open ./$TERM_THEMA.terminal
-sleep 2
-defaults write com.apple.Terminal "Startup Window Settings" -string "$TERM_THEMA"
-defaults write com.apple.Terminal "Default Window Settings" -string "$TERM_THEMA"
-
-TERM_FONT_NAME='modIncosolata.ttf'
-sudo cp $TERM_FONT_NAME $HOME/Library/Fonts
-set_font() {
-	osascript -e "tell application \"Terminal\" to set the font name of window 1 to \"$1\""
-	osascript -e "tell application \"Terminal\" to set font size of window 1 to $2"
+load_terminal_thema_setting() {
+	echo "$1" | sudo -S open ./monokai.terminal
+	sleep 2
+	defaults write com.apple.Terminal "Startup Window Settings" -string "monokai"
+	defaults write com.apple.Terminal "Default Window Settings" -string "monokai"
 }
-set_font "$TERM_FONT_NAME" 14
+load_terminal_thema_setting
+
+load_terminal_font_setting() {
+    echo "$1" | sudo -S cp ./modIncosolata.ttf $HOME/Library/Fonts
+	set_font() {
+		osascript -e "tell application \"Terminal\" to set the font name of window 1 to \"$1\""
+		osascript -e "tell application \"Terminal\" to set font size of window 1 to $2"
+	}
+	set_font "modIncosolata.ttf" 14
+}
+load_terminal_font_setting
 
 defaults import com.apple.Terminal "$HOME/Library/Preferences/com.apple.Terminal.plist"
 
@@ -259,16 +263,30 @@ nvim_install() {
 	echo "$1" | sudo -S rm -rf /usr/local/bin/nvim
 	echo "$1" | sudo rm -rf /usr/local/share/nvim
 	cd $HOME
-        git clone https://github.com/neovim/neovim
-        cd neovim
-        make clean
-        make CMAKE_BUILD_TYPE=RelWithDebInfo
-        sudo make install
-        cd ../
-        rm -rf neovim
+	git clone https://github.com/neovim/neovim
+	cd neovim
+	make clean
+	make CMAKE_BUILD_TYPE=RelWithDebInfo
+	sudo make install
+	cd ../
+	rm -rf neovim
 }
 
 nvim_install $1
+
+
+#anyenv設定読み込み
+load_anyenv_settings() {
+    if [ -d $HOME/.anyenv ]; then
+		export PATH="$HOME/.anyenv/bin:$PATH"
+		echo $PATH
+		eval "$(anyenv init -)"
+		for D in 'ls $HOME/.anyenv/envs'
+		do
+			export PATH="$HOME/.anyenv/envs/$D/shims:$PATH"
+		done
+	fi
+}
 
 #anyenvインストール
 rm -r $HOME/.anyenv
@@ -278,6 +296,8 @@ mkdir $HOME/.anyenv/plugins
 git clone https://github.com/znz/anyenv-update.git $HOME/.anyenv/plugins/anyenv-update
 git clone git://github.com/aereal/anyenv-exec.git $HOME/.anyenv/plugins/anyenv-exe
 git clone https://github.com/znz/anyenv-git.git $HOME/.anyenv/plugins/anyenv-git
+
+load_anyenv_settings
 
 #Go設定
 
