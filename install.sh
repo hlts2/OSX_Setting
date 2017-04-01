@@ -137,8 +137,7 @@ defaults write com.apple.helpviewer DevMode -bool true
 defaults write com.apple.terminal StringEncodings -array 4
 
 load_terminal_thema_setting() {
-	echo "$1" | sudo -S open ./monokai.terminal
-	sleep 2
+	echo "$1" | sudo -S open ./monokai.terminal; sleep 2
 	defaults write com.apple.Terminal "Startup Window Settings" -string "monokai"
 	defaults write com.apple.Terminal "Default Window Settings" -string "monokai"
 }
@@ -289,6 +288,7 @@ load_anyenv_settings() {
 	fi
 }
 
+
 #anyenvインストール
 rm -r $HOME/.anyenv
 git clone https://github.com/riywo/anyenv $HOME/.anyenv
@@ -300,6 +300,7 @@ git clone https://github.com/znz/anyenv-git.git $HOME/.anyenv/plugins/anyenv-git
 
 load_anyenv_settings
 anyenv install -l
+
 
 #Python設定
 anyenv install pyenv
@@ -313,11 +314,18 @@ pyenv global 2.7.13 3.6.0
 
 load_anyenv_settings
 
+
 #Swift設定
+
+
 
 #PHP設定
 
+
+
 #Java設定
+
+
 
 #vagrantの初期設定
 vagrant_setup() {
