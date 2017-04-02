@@ -216,10 +216,13 @@ brew_package_install docker-machine ''
 brew_package_install docker ''
 brew_package_install carthage ''
 brew_package_install fontconfig ''
+brew_package_install go ''
+#↓nvimインストール用
 brew_package_install cmake ''
 brew_package_install pkg-config ''
 brew_package_install libtool ''
-brew_package_install go ''
+#↓nvim plugins(deoplete-swift)用
+brew_package_install sourcekitten ''
 
 #gemパッケージインストール
 #gem_package_install pod ''
