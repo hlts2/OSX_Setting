@@ -223,6 +223,8 @@ brew_package_install pkg-config ''
 brew_package_install libtool ''
 #↓nvim plugins(deoplete-swift)用
 brew_package_install sourcekitten ''
+#↓nvim Plugins(syntastic-swiftlint.vim)用
+brew_package_install swiftlint ''
 
 #gemパッケージインストール
 #gem_package_install pod ''
