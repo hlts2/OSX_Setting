@@ -195,7 +195,7 @@ brew_package_install() {
 
 gem_package_install() {
 	echo EXCUTING gem install $1 $2
-	gem install $1 $2
+	echo "$1" | sudo -S gem install $1 $2
 	[ $? -ne 0 ] && echo ERROR gem install $1 $2
 }
 
@@ -227,8 +227,8 @@ brew_package_install sourcekitten ''
 brew_package_install swiftlint ''
 
 #gemパッケージインストール
-#gem_package_install pod ''
 echo "$1" | sudo -S gem install -n /usr/local/bin cocoapods
+echo "$1" | sudo -S gem install synx
 
 #アプリケーションインストール
 app_install virtualbox ''
