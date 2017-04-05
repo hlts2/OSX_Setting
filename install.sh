@@ -329,6 +329,7 @@ pip2 install --upgrade neovim
 pip3 install --upgrade neovim
 
 #Swift設定
+pip3 install pyyaml #autocomplete-swift用
 
 
 
