@@ -243,6 +243,7 @@ app_install java ''
 app_install netbeans ''
 app_install android-studio ''
 app_install filezilla ''
+app_install google-japanese-ime ''
 
 atom_package_install() {
 	echo EXCUTING apm install $1
