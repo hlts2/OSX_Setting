@@ -325,9 +325,15 @@ pip install --upgrade pip
 pip2 install --upgrade pip2
 pip3 install --upgrade pip3
 
+#neovim設定
 pip install --upgrade neovim
 pip2 install --upgrade neovim
 pip3 install --upgrade neovim
+
+#Go設定
+go get -u github.com/nsf/gocode
+pip2 install ujson
+pip3 install ujson
 
 #Swift設定
 pip3 install pyyaml #autocomplete-swift用
