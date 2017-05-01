@@ -225,6 +225,7 @@ brew_package_install libtool ''
 brew_package_install sourcekitten ''
 #↓nvim Plugins(syntastic-swiftlint.vim)用
 brew_package_install swiftlint ''
+brew_package_install tig
 
 #gemパッケージインストール
 echo "$1" | sudo -S gem install -n /usr/local/bin cocoapods
