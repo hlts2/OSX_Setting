@@ -334,6 +334,9 @@ pip3 install --upgrade neovim
 
 #Go設定
 go get -u github.com/nsf/gocode
+go get code.google.com/p/go.tools/cmd/godoc
+go get github.com/golang/lint
+
 pip2 install ujson
 pip3 install ujson
 
