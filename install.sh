@@ -264,7 +264,7 @@ atom_package_install pretty-json
 atom_package_install linter
 atom_package_install regex-railroad-diagram
 atom_package_install file-icons
-
+atom_package_install editorconfig
 
 #nvimインストール
 nvim_install() {
