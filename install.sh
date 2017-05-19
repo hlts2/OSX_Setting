@@ -344,24 +344,22 @@ pip3 install ujson
 pip3 install pyyaml #autocomplete-swift用
 pip2 install pyyaml #autocomplete-swift用
 
-#PHP設定
-
-
-
-#Java設定
-
-
-
 #vagrantの初期設定
-vagrant_setup() {
+vagrant_centos_setup() {
 	vagrant box add CentOS7 https://github.com/tommy-muehle/puppet-vagrant-boxes/releases/download/1.1.0/centos-7.0-x86_64.box
 	mkdir -p $HOME/vagrant/CentOS7
 	cd $HOME/vagrant/CentOS7
 	vagrant init CentOS7
 }
 
-vagrant_setup
+vagrant_coreos_setup() {
+	cd $HOME/vagrant
+	git clone https://github.com/coreos/coreos-vagrant.git
+	mv coreos-vagrant CoreOS
+}
 
+vagrant_coreos_setup
+vagrant_centos_setup
 
 echo "$1" | sudo -S chsh -s /usr/local/bin/zsh $USER
 echo "$1" | sudo -S reboot
