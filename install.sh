@@ -185,86 +185,15 @@ gem_init() {
 brew_init
 gem_init
 
-brew install caskroom/cask/brew-cask
-
-brew_package_install() {
-	echo EXCUTING brew install $1 $2
-	brew install $1 $2
-	[ $? -ne 0 ] && echo ERROR brew install $1 $2
-}
-
-gem_package_install() {
-	echo EXCUTING gem install $1 $2
-	echo "$1" | sudo -S gem install $1 $2
-	[ $? -ne 0 ] && echo ERROR gem install $1 $2
-}
-
-app_install() {
-	echo EXCUTING brew cask install $1 $2
-	brew cask install $1 $2
-	[ $? -ne 0 ] && echo ERROR brew cask install $1 $2
-}
-
 #brewパッケージインストール
-brew_package_install openssl ''
-brew_package_install git ''
-brew_package_install wget ''
-brew_package_install curl ''
-brew_package_install zsh ''
-brew_package_install tmux ''
-brew_package_install docker-machine ''
-brew_package_install docker ''
-brew_package_install carthage ''
-brew_package_install fontconfig ''
-brew_package_install go ''
-#↓nvimインストール用
-brew_package_install cmake ''
-brew_package_install pkg-config ''
-brew_package_install libtool ''
-#↓nvim plugins(deoplete-swift)用
-brew_package_install sourcekitten ''
-#↓nvim Plugins(syntastic-swiftlint.vim)用
-brew_package_install swiftlint ''
-brew_package_install tig
+brew bundle
 
 #gemパッケージインストール
 echo "$1" | sudo -S gem install -n /usr/local/bin cocoapods
 echo "$1" | sudo -S gem install synx
 
-#アプリケーションインストール
-app_install virtualbox ''
-app_install vagrant ''
-app_install google-chrome ''
-app_install ccleaner ''
-app_install atom ''
-app_install slack ''
-app_install appcleaner ''
-app_install kindle ''
-app_install java ''
-app_install netbeans ''
-app_install android-studio ''
-app_install filezilla ''
-app_install google-japanese-ime ''
-app_install xccello ''
-
-atom_package_install() {
-	echo EXCUTING apm install $1
-	apm install $1
-	[ $? -ne 0 ] && echo ERROR apm install $1
-}
-
 #atomパッケージインストール
-atom_package_install emmet
-atom_package_install autocomplete-paths
-atom_package_install color-picker
-atom_package_install highlight-selected
-atom_package_install atom-material-ui
-atom_package_install monokai
-atom_package_install pretty-json
-atom_package_install linter
-atom_package_install regex-railroad-diagram
-atom_package_install file-icons
-atom_package_install editorconfig
+apm install --packages-file atom.package
 
 #nvimインストール
 nvim_install() {
