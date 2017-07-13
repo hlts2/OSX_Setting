@@ -169,6 +169,10 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 
 brew tap homebrew/bundle
 
+#Dart
+brew tap dart-lang/dart
+
+
 brew_init() {
 	echo "Initializing brew"
 	brew update
