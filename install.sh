@@ -3,162 +3,162 @@
 echo "$1" | sudo -S -v
 
 #Dock設定
-defaults write com.apple.dock tilesize -int 40
-defaults write com.apple.dock largesize -float 100
-defaults write com.apple.dock magnification -bool true
-defaults write com.apple.dock orientation -string "right"
-defaults write com.apple.dock mineffect -string "genie"
-defaults write com.apple.dock no-glass -boolean YES
-defaults write com.apple.dock mouse-over-hilite-stack -bool true
-defaults write com.apple.dock showhidden -bool true
-defaults write com.apple.dock no-bouncing -bool true
-defaults write com.apple.dock autohide-immutable -bool true
+echo "$1" | sudo -S defaults write com.apple.dock tilesize -int 40
+echo "$1" | sudo -S defaults write com.apple.dock largesize -float 100
+echo "$1" | sudo -S defaults write com.apple.dock magnification -bool true
+echo "$1" | sudo -S defaults write com.apple.dock orientation -string "right"
+echo "$1" | sudo -S defaults write com.apple.dock mineffect -string "genie"
+echo "$1" | sudo -S defaults write com.apple.dock no-glass -boolean YES
+echo "$1" | sudo -S defaults write com.apple.dock mouse-over-hilite-stack -bool true
+echo "$1" | sudo -S defaults write com.apple.dock showhidden -bool true
+echo "$1" | sudo -S defaults write com.apple.dock no-bouncing -bool true
+echo "$1" | sudo -S defaults write com.apple.dock autohide-immutable -bool true
 
 #Mission Control設定
-defaults write com.apple.dock expose-animation-duration -float 0.1
-defaults write com.apple.dock workspaces-edge-delay -float 0
+echo "$1" | sudo -S defaults write com.apple.dock expose-animation-duration -float 0.1
+echo "$1" | sudo -S defaults write com.apple.dock workspaces-edge-delay -float 0
 
 #エネルギー設定
-defaults write com.apple.menuextra.battery ShowPercent -string "YES"
-defaults write com.apple.menuextra.battery ShowTime -string "YES"
+echo "$1" | sudo -S defaults write com.apple.menuextra.battery ShowPercent -string "YES"
+echo "$1" | sudo -S defaults write com.apple.menuextra.battery ShowTime -string "YES"
 
 #キーボード設定
-defaults write -g KeyRepeat -int 2
-defaults write -g InitialKeyRepeat -int 15;
+echo "$1" | sudo -S defaults write -g KeyRepeat -int 2
+echo "$1" | sudo -S defaults write -g InitialKeyRepeat -int 15;
 
 #Launchpad設定
-defaults write com.apple.dock springboard-show-duration -int 0
-defaults write com.apple.dock springboard-hide-duration -int 0
+echo "$1" | sudo -S defaults write com.apple.dock springboard-show-duration -int 0
+echo "$1" | sudo -S defaults write com.apple.dock springboard-hide-duration -int 0
 
 #Safari設定
-defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true
-defaults write com.apple.Safari IncludeDevelopMenu -bool true
-defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
-defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
-defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
-defaults write com.apple.Safari ShowStatusBar -bool true
-defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
-defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
-defaults write com.apple.Safari AutoFillPasswords -bool false
-defaults write com.apple.Safari WebKitInitialTimedLayoutDelay 0.0
+echo "$1" | sudo -S defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true
+echo "$1" | sudo -S defaults write com.apple.Safari IncludeDevelopMenu -bool true
+echo "$1" | sudo -S defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
+echo "$1" | sudo -S defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
+echo "$1" | sudo -S defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
+echo "$1" | sudo -S defaults write com.apple.Safari ShowStatusBar -bool true
+echo "$1" | sudo -S defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
+echo "$1" | sudo -S defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
+echo "$1" | sudo -S defaults write com.apple.Safari AutoFillPasswords -bool false
+echo "$1" | sudo -S defaults write com.apple.Safari WebKitInitialTimedLayoutDelay 0.0
 
 #Finder設定
-defaults write com.apple.frameworks.diskimages auto-open-ro-root -bool true
-defaults write com.apple.frameworks.diskimages auto-open-rw-root -bool true
-defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true
-defaults write com.apple.finder NewWindowTarget -string "PfDe"
-defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/"
-defaults write com.apple.finder ShowPathbar -bool true
-defaults write com.apple.finder ShowStatusBar -bool true
-defaults write com.apple.finder ShowTabView -bool true
-chflags nohidden ~/Library
-defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
-defaults write com.apple.finder AppleShowAllFiles NO
-defaults write com.apple.finder GoToField -string /
-defaults write com.apple.finder FinderSounds -bool no
-defaults write -g AppleShowAllExtensions -bool true
+echo "$1" | sudo -S defaults write com.apple.frameworks.diskimages auto-open-ro-root -bool true
+echo "$1" | sudo -S defaults write com.apple.frameworks.diskimages auto-open-rw-root -bool true
+echo "$1" | sudo -S defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true
+echo "$1" | sudo -S defaults write com.apple.finder NewWindowTarget -string "PfDe"
+echo "$1" | sudo -S defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/"
+echo "$1" | sudo -S defaults write com.apple.finder ShowPathbar -bool true
+echo "$1" | sudo -S defaults write com.apple.finder ShowStatusBar -bool true
+echo "$1" | sudo -S defaults write com.apple.finder ShowTabView -bool true
+echo "$1" | sudo -S chflags nohidden ~/Library
+echo "$1" | sudo -S defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
+echo "$1" | sudo -S defaults write com.apple.finder AppleShowAllFiles NO
+echo "$1" | sudo -S defaults write com.apple.finder GoToField -string /
+echo "$1" | sudo -S defaults write com.apple.finder FinderSounds -bool no
+echo "$1" | sudo -S defaults write -g AppleShowAllExtensions -bool true
 
 #Quick Look設定
-defaults write com.apple.finder QLEnableTextSelection -bool true
+echo "$1" | sudo -S defaults write com.apple.finder QLEnableTextSelection -bool true
 
 #Trackpad
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -int 1
-defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
-defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+echo "$1" | sudo -S defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -int 1
+echo "$1" | sudo -S defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+echo "$1" | sudo -S defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
 #その他設定
-defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+echo "$1" | sudo -S defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 
-defaults write com.apple.menuextra.clock 'DateFormat' -string 'EEE H:mm'
+echo "$1" | sudo -S defaults write com.apple.menuextra.clock 'DateFormat' -string 'EEE H:mm'
 
-defaults write com.apple.screencapture type -string "png"
+echo "$1" | sudo -S defaults write com.apple.screencapture type -string "png"
 
-defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
+echo "$1" | sudo -S defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 
-defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+echo "$1" | sudo -S defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 
-defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
+echo "$1" | sudo -S defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
 
-defaults write com.apple.screencapture location ~/Pictures
+echo "$1" | sudo -S defaults write com.apple.screencapture location ~/Pictures
 
-defaults write com.apple.screencapture include-date -bool false
+echo "$1" | sudo -S defaults write com.apple.screencapture include-date -bool false
 
-defaults write com.apple.dock no-bouncing -bool true
+echo "$1" | sudo -S defaults write com.apple.dock no-bouncing -bool true
 
-defaults write -g NSNavPanelExpandedStateForSaveMode -bool true
+echo "$1" | sudo -S defaults write -g NSNavPanelExpandedStateForSaveMode -bool true
 
-defaults write -g PMPrintingExpandedStateForPrint -bool true
+echo "$1" | sudo -S defaults write -g PMPrintingExpandedStateForPrint -bool true
 
-defaults write -g NSWindowResizeTime 0.1
+echo "$1" | sudo -S defaults write -g NSWindowResizeTime 0.1
 
-defaults write com.apple.finder AutoStopWhenSelectionChanges -bool false
+echo "$1" | sudo -S defaults write com.apple.finder AutoStopWhenSelectionChanges -bool false
 
-defaults write com.apple.finder AutoStopWhenScrollingOffBounds -bool false
+echo "$1" | sudo -S defaults write com.apple.finder AutoStopWhenScrollingOffBounds -bool false
 
-defaults write com.apple.finder QLInlinePreviewMinimumSupportedSize -int 0
+echo "$1" | sudo -S defaults write com.apple.finder QLInlinePreviewMinimumSupportedSize -int 0
 
-defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
-defaults write com.apple.desktopservices DSDontWriteNetworkStores true
+echo "$1" | sudo -S defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+echo "$1" | sudo -S defaults write com.apple.desktopservices DSDontWriteNetworkStores true
 
-defaults write com.apple.NetworkBrowser ShowThisComputer -bool true
+echo "$1" | sudo -S defaults write com.apple.NetworkBrowser ShowThisComputer -bool true
 
-defaults write com.apple.finder CreateDesktop -bool false
+echo "$1" | sudo -S defaults write com.apple.finder CreateDesktop -bool false
 
-defaults write com.apple.LaunchServices LSQuarantine -bool false
+echo "$1" | sudo -S defaults write com.apple.LaunchServices LSQuarantine -bool false
 
-defaults write com.apple.screencapture disable-shadow -bool true
+echo "$1" | sudo -S defaults write com.apple.screencapture disable-shadow -bool true
 
-defaults write /Library/Preferences/com.apple.Bluetooth ControllerPowerState -int 0
+echo "$1" | sudo -S defaults write /Library/Preferences/com.apple.Bluetooth ControllerPowerState -int 0
 
-defaults write -g AppleLanguages -array ja
+echo "$1" | sudo -S defaults write -g AppleLanguages -array ja
 
-defaults write com.apple.ImageCapture disableHotPlug -bool NO
+echo "$1" | sudo -S defaults write com.apple.ImageCapture disableHotPlug -bool NO
 
-defaults write com.apple.CrashReporter DialogType none
+echo "$1" | sudo -S defaults write com.apple.CrashReporter DialogType none
 
-defaults write com.apple.dashboard devmode YES
+echo "$1" | sudo -S defaults write com.apple.dashboard devmode YES
 
-defaults write com.apple.dock itunes-notifications -bool TRUE
+echo "$1" | sudo -S defaults write com.apple.dock itunes-notifications -bool TRUE
 
-defaults write com.apple.iTunes high-contrast-mode-enable -bool true
+echo "$1" | sudo -S defaults write com.apple.iTunes high-contrast-mode-enable -bool true
 
-defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool YES
+echo "$1" | sudo -S defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool YES
 
-defaults write com.apple.dashboard mcx-disabled -boolean true
+echo "$1" | sudo -S defaults write com.apple.dashboard mcx-disabled -boolean true
 
-defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
+echo "$1" | sudo -S defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 
 #共有設定
 echo "$1" | sudo scutil --set ComputerName H_Funakoshi
 echo "$1" | sudo scutil --set LocalHostName HirotoFunakoshi
 
 #Terminal設定
-defaults write com.apple.helpviewer DevMode -bool true
-defaults write com.apple.terminal StringEncodings -array 4
+echo "$1" | sudo -S defaults write com.apple.helpviewer DevMode -bool true
+echo "$1" | sudo -S defaults write com.apple.terminal StringEncodings -array 4
 
 load_terminal_thema_setting() {
 	echo "$1" | sudo -S open ./monokai.terminal; sleep 2
-	defaults write com.apple.Terminal "Startup Window Settings" -string "monokai"
-	defaults write com.apple.Terminal "Default Window Settings" -string "monokai"
+	echo "$1" | sudo -S killall Dockdefaults write com.apple.Terminal "Startup Window Settings" -string "monokai"
+	echo "$1" | sudo -S killall Dockdefaults write com.apple.Terminal "Default Window Settings" -string "monokai"
 }
 
 load_terminal_font_setting() {
     echo "$1" | sudo -S cp ./modIncosolata.ttf $HOME/Library/Fonts
 	set_font() {
-		osascript -e "tell application \"Terminal\" to set the font name of window 1 to \"$1\""
-		osascript -e "tell application \"Terminal\" to set font size of window 1 to $2"
+		echo "$1" | sudo -S osascript -e "tell application \"Terminal\" to set the font name of window 1 to \"$2\""
+		echo "$1" | sudo -S osascript -e "tell application \"Terminal\" to set font size of window 1 to $3"
 	}
-	set_font "modIncosolata.ttf" 14
+	set_font $1 "modIncosolata.ttf" 14
 }
 
-load_terminal_thema_setting
-load_terminal_font_setting
+load_terminal_thema_setting $1
+load_terminal_font_setting $1
 
-defaults import com.apple.Terminal "$HOME/Library/Preferences/com.apple.Terminal.plist"
+echo "$1" | sudo -S defaults import com.apple.Terminal "$HOME/Library/Preferences/com.apple.Terminal.plist"
 
-killall Dock
-killall SystemUIServer
-killall Finder
+echo "$1" | sudo -S killall Dock
+echo "$1" | sudo -S killall Dockkillall SystemUIServer
+echo "$1" | sudo -S killall Dockkillall Finder
 
 
 #echo "$1" | sudo -S xcodebuild -license
