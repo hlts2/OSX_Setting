@@ -273,6 +273,17 @@ go get github.com/golang/lint
 pip2 install ujson
 pip3 install ujson
 
+
+#Xcode設定(XVim)
+cd ~/Library/Application\ Support/Developer/Shared/Xcode/
+mkdir Plug-ins
+cd Plug-ins
+git clone https://github.com/keith/XVim.git
+git fetch origin xcode-8.3-release
+git checkout xcode-8.3-release
+make
+
+
 #Swift設定
 pip3 install pyyaml #autocomplete-swift用
 pip2 install pyyaml #autocomplete-swift用
