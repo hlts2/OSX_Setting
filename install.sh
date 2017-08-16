@@ -137,18 +137,18 @@ echo "$1" | sudo -S defaults write com.apple.helpviewer DevMode -bool true
 echo "$1" | sudo -S defaults write com.apple.terminal StringEncodings -array 4
 
 load_terminal_thema_setting() {
-	echo "$1" | sudo -S open ./monokai.terminal; sleep 2
-	echo "$1" | sudo -S killall Dockdefaults write com.apple.Terminal "Startup Window Settings" -string "monokai"
-	echo "$1" | sudo -S killall Dockdefaults write com.apple.Terminal "Default Window Settings" -string "monokai"
+    echo "$1" | sudo -S open ./monokai.terminal; sleep 2
+    echo "$1" | sudo -S killall Dockdefaults write com.apple.Terminal "Startup Window Settings" -string "monokai"
+    echo "$1" | sudo -S killall Dockdefaults write com.apple.Terminal "Default Window Settings" -string "monokai"
 }
 
 load_terminal_font_setting() {
-	echo "$1" | sudo -S cp ./modIncosolata.ttf $HOME/Library/Fonts
-	set_font() {
-		echo "$1" | sudo -S osascript -e "tell application \"Terminal\" to set the font name of window 1 to \"$2\""
-		echo "$1" | sudo -S osascript -e "tell application \"Terminal\" to set font size of window 1 to $3"
-	}
-	set_font $1 "modIncosolata.ttf" 14
+    echo "$1" | sudo -S cp ./modIncosolata.ttf $HOME/Library/Fonts
+    set_font() {
+        echo "$1" | sudo -S osascript -e "tell application \"Terminal\" to set the font name of window 1 to \"$2\""
+        echo "$1" | sudo -S osascript -e "tell application \"Terminal\" to set font size of window 1 to $3"
+    }
+    set_font $1 "modIncosolata.ttf" 14
 }
 
 load_terminal_thema_setting $1
@@ -174,16 +174,16 @@ brew tap dart-lang/dart
 
 
 brew_init() {
-	echo "Initializing brew"
-	brew update
-	brew upgrade --all
-	brew cleanup
-	brew linkapps
+    echo "Initializing brew"
+    brew update
+    brew upgrade --all
+    brew cleanup
+    brew linkapps
 }
 
 gem_init() {
-	echo "Initializing gem"
-	gem update --system
+    echo "Initializing gem"
+    gem update --system
 }
 
 brew_init
@@ -201,17 +201,17 @@ apm install --packages-file atom.package
 
 #nvimインストール
 nvim_install() {
-	echo "$1" | sudo -S rm -rf $HOME/neovim
-	echo "$1" | sudo -S rm -rf /usr/local/bin/nvim
-	echo "$1" | sudo rm -rf /usr/local/share/nvim
-	cd $HOME
-	git clone https://github.com/neovim/neovim
-	cd neovim
-	make clean
-	make CMAKE_BUILD_TYPE=RelWithDebInfo
-	sudo make install
-	cd ../
-	rm -rf neovim
+    echo "$1" | sudo -S rm -rf $HOME/neovim
+    echo "$1" | sudo -S rm -rf /usr/local/bin/nvim
+    echo "$1" | sudo rm -rf /usr/local/share/nvim
+    cd $HOME
+    git clone https://github.com/neovim/neovim
+    cd neovim
+    make clean
+    make CMAKE_BUILD_TYPE=RelWithDebInfo
+    sudo make install
+    cd ../
+    rm -rf neovim
 }
 
 nvim_install $1
@@ -219,15 +219,15 @@ nvim_install $1
 
 #anyenv設定読み込み
 load_anyenv_settings() {
-	if [ -d $HOME/.anyenv ]; then
-		export PATH="$HOME/.anyenv/bin:$PATH"
-		echo $PATH
-		eval "$(anyenv init -)"
-		for D in 'ls $HOME/.anyenv/envs'
-		do
-			export PATH="$HOME/.anyenv/envs/$D/shims:$PATH"
-		done
-	fi
+    if [ -d $HOME/.anyenv ]; then
+        export PATH="$HOME/.anyenv/bin:$PATH"
+        echo $PATH
+        eval "$(anyenv init -)"
+        for D in 'ls $HOME/.anyenv/envs'
+        do
+            export PATH="$HOME/.anyenv/envs/$D/shims:$PATH"
+        done
+    fi
 }
 
 
@@ -289,16 +289,16 @@ pip2 install pyyaml #autocomplete-swift用
 
 #vagrantの初期設定
 vagrant_centos_setup() {
-	vagrant box add CentOS7 https://github.com/tommy-muehle/puppet-vagrant-boxes/releases/download/1.1.0/centos-7.0-x86_64.box
-	mkdir -p $HOME/vagrant/CentOS7
-	cd $HOME/vagrant/CentOS7
-	vagrant init CentOS7
+    vagrant box add CentOS7 https://github.com/tommy-muehle/puppet-vagrant-boxes/releases/download/1.1.0/centos-7.0-x86_64.box
+    mkdir -p $HOME/vagrant/CentOS7
+    cd $HOME/vagrant/CentOS7
+    vagrant init CentOS7
 }
 
 vagrant_coreos_setup() {
-	cd $HOME/vagrant
-	git clone https://github.com/coreos/coreos-vagrant.git
-	mv coreos-vagrant CoreOS
+    cd $HOME/vagrant
+    git clone https://github.com/coreos/coreos-vagrant.git
+    mv coreos-vagrant CoreOS
 }
 
 vagrant_coreos_setup
