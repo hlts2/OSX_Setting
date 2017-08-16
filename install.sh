@@ -143,7 +143,7 @@ load_terminal_thema_setting() {
 }
 
 load_terminal_font_setting() {
-    echo "$1" | sudo -S cp ./modIncosolata.ttf $HOME/Library/Fonts
+	echo "$1" | sudo -S cp ./modIncosolata.ttf $HOME/Library/Fonts
 	set_font() {
 		echo "$1" | sudo -S osascript -e "tell application \"Terminal\" to set the font name of window 1 to \"$2\""
 		echo "$1" | sudo -S osascript -e "tell application \"Terminal\" to set font size of window 1 to $3"
@@ -219,7 +219,7 @@ nvim_install $1
 
 #anyenv設定読み込み
 load_anyenv_settings() {
-    if [ -d $HOME/.anyenv ]; then
+	if [ -d $HOME/.anyenv ]; then
 		export PATH="$HOME/.anyenv/bin:$PATH"
 		echo $PATH
 		eval "$(anyenv init -)"
@@ -282,7 +282,6 @@ git clone https://github.com/keith/XVim.git
 git fetch origin xcode-8.3-release
 git checkout xcode-8.3-release
 make
-
 
 #Swift設定
 pip3 install pyyaml #autocomplete-swift用
