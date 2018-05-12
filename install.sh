@@ -273,6 +273,8 @@ go get github.com/golang/lint
 pip2 install ujson
 pip3 install ujson
 
+#Python設定
+pip3 install jedi
 
 #Xcode設定(XVim)
 cd ~/Library/Application\ Support/Developer/Shared/Xcode/
