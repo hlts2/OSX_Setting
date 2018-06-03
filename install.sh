@@ -169,10 +169,6 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 
 brew tap homebrew/bundle
 
-#Dart
-brew tap dart-lang/dart
-
-
 brew_init() {
     echo "Initializing brew"
     brew update
@@ -217,7 +213,7 @@ nvim_install() {
 nvim_install $1
 
 
-#anyenv設定読み込み
+#anyenvインストール
 load_anyenv_settings() {
     if [ -d $HOME/.anyenv ]; then
         export PATH="$HOME/.anyenv/bin:$PATH"
@@ -230,30 +226,25 @@ load_anyenv_settings() {
     fi
 }
 
-
 #anyenvインストール
 rm -r $HOME/.anyenv
 git clone https://github.com/riywo/anyenv $HOME/.anyenv
-rm -r $HOME/.anyenv/plugins
-mkdir $HOME/.anyenv/plugins
-git clone https://github.com/znz/anyenv-update.git $HOME/.anyenv/plugins/anyenv-update
-git clone git://github.com/aereal/anyenv-exec.git $HOME/.anyenv/plugins/anyenv-exe
-git clone https://github.com/znz/anyenv-git.git $HOME/.anyenv/plugins/anyenv-git
 
 load_anyenv_settings
+
 anyenv install -l
 
+#pyenvインストール
+pyenv_settings() {
+    anyenv install pyenv
+    mkdir -p $HOME/.anyenv/envs/pyenv/plugins
 
-#Python設定
-anyenv install pyenv
-mkdir -p $HOME/.anyenv/envs/pyenv/plugins
+    pyenv install 2.7.13
+    pyenv install 3.6.0
+    pyenv global 2.7.13 3.6.0
+}
 
-load_anyenv_settings
-
-pyenv install 2.7.13
-pyenv install 3.6.0
-pyenv global 2.7.13 3.6.0
-
+pyenv_settings
 load_anyenv_settings
 
 pip install --upgrade pip
