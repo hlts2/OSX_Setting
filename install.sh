@@ -143,16 +143,16 @@ load_terminal_thema_setting() {
 }
 
 load_terminal_font_setting() {
-    echo "$1" | sudo -S cp ./modIncosolata.ttf $HOME/Library/Fonts
-    set_font() {
-        echo "$1" | sudo -S osascript -e "tell application \"Terminal\" to set the font name of window 1 to \"$2\""
-        echo "$1" | sudo -S osascript -e "tell application \"Terminal\" to set font size of window 1 to $3"
-    }
-    set_font $1 "modIncosolata.ttf" 14
+    wget "https://github.com/edihbrandon/RictyDiminished/raw/master/$2.ttf"
+
+    echo "$1" | sudo -S cp ./RictyDiminished-Regular.ttf $HOME/Library/Fonts
+
+    echo "$1" | sudo -S osascript -e "tell application \"Terminal\" to set the font name of window 1 to \"$2\""
+    echo "$1" | sudo -S osascript -e "tell application \"Terminal\" to set font size of window 1 to 11"
 }
 
 load_terminal_thema_setting $1
-load_terminal_font_setting $1
+load_terminal_font_setting $1 RictyDiminished-Regular.ttf
 
 echo "$1" | sudo -S defaults import com.apple.Terminal "$HOME/Library/Preferences/com.apple.Terminal.plist"
 
