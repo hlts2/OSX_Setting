@@ -212,7 +212,6 @@ nvim_install() {
 
 nvim_install $1
 
-
 #anyenvインストール
 load_anyenv_settings() {
     if [ -d $HOME/.anyenv ]; then
