@@ -143,9 +143,9 @@ load_terminal_thema_setting() {
 }
 
 load_terminal_font_setting() {
-    wget "https://github.com/edihbrandon/RictyDiminished/raw/master/$2.ttf"
+    wget "https://github.com/edihbrandon/RictyDiminished/raw/master/$2"
 
-    echo "$1" | sudo -S cp ./RictyDiminished-Regular.ttf $HOME/Library/Fonts
+    echo "$1" | sudo -S cp ./$2 $HOME/Library/Fonts
 
     echo "$1" | sudo -S osascript -e "tell application \"Terminal\" to set the font name of window 1 to \"$2\""
     echo "$1" | sudo -S osascript -e "tell application \"Terminal\" to set font size of window 1 to 11"
