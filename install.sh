@@ -143,16 +143,19 @@ load_terminal_thema_setting() {
 }
 
 load_terminal_font_setting() {
-    wget "https://github.com/edihbrandon/RictyDiminished/raw/master/$2"
+    # wget "https://github.com/edihbrandon/RictyDiminished/raw/master/$2"
+    wget "https://github.com/mzyy94/RictyDiminished-for-Powerline/tree/master/powerline-fontpatched/$2"
 
-    echo "$1" | sudo -S cp ./$2 $HOME/Library/Fonts
+    font=`echo $1 | sed -e "s/%20D/ /"`
+    echo "$1" | sudo -S cp ./$font $HOME/Library/Fonts
 
-    echo "$1" | sudo -S osascript -e "tell application \"Terminal\" to set the font name of window 1 to \"$2\""
+    echo "$1" | sudo -S osascript -e "tell application \"Terminal\" to set the font name of window 1 to \"$font\""
     echo "$1" | sudo -S osascript -e "tell application \"Terminal\" to set font size of window 1 to 11"
 }
 
 load_terminal_thema_setting $1
-load_terminal_font_setting $1 RictyDiminished-Regular.ttf
+#load_terminal_font_setting $1 RictyDiminished-Regular.ttf
+load_terminal_font_setting $1 Ricty%20Diminished%20Discord%20Regular%20for%20Powerline.ttf
 
 echo "$1" | sudo -S defaults import com.apple.Terminal "$HOME/Library/Preferences/com.apple.Terminal.plist"
 
