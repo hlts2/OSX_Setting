@@ -299,5 +299,9 @@ vagrant_coreos_setup() {
 vagrant_coreos_setup
 vagrant_centos_setup
 
+# fzf
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+
 echo "$1" | sudo -S chsh -s /usr/local/bin/zsh $USER
 echo "$1" | sudo -S reboot
