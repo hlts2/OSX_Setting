@@ -194,6 +194,8 @@ brew bundle
 #gemパッケージインストール
 echo "$1" | sudo -S gem install -n /usr/local/bin cocoapods
 echo "$1" | sudo -S gem install synx
+echo "$1" | sudo -S gem install rsense
+echo "$1" | sudo -S gem install rubocop
 
 #atomパッケージインストール
 apm install --packages-file atom.package
@@ -244,6 +246,9 @@ pyenv_settings() {
     pyenv install 2.7.13
     pyenv install 3.6.0
     pyenv global 2.7.13 3.6.0
+
+    git clone git://github.com/pyenv/pyenv-update.git $(pyenv root)/plugins/pyenv-update
+    pyenv update
 }
 
 pyenv_settings
